@@ -1,0 +1,32 @@
+
+h1,h2{
+    font-size: medium;
+}
+body{
+    font-family: cursive;
+    text-align: center;
+    background: url("./farm\ bg.jpg");
+    background-size: cover;
+}
+
+#container{
+    width: 30em;
+    height: 30em;
+    background-color: rgba(0,0,0,0.5);
+    margin:0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    border: solid white 2px;
+    border-radius: 25px;
+}
+
+
+#container div{
+    width:6em;
+    height:6em;
+}
+#container div img{
+    width:6em;
+    height:6em;
+    background: none;
+}
