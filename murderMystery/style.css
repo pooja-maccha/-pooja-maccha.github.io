@@ -1,0 +1,193 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+#button{
+  color: rgba(43, 60, 67, 0.8);
+  background-color: white;
+  padding: 1em;
+  font-family: cursive;
+  border:none;
+}
+#link{
+  position: relative;
+  bottom: -120px;;
+
+}
+
+#addLink{
+  color:white;
+  font-family: cursive;
+}
+
+header {
+    background-color: rgba(43, 60, 67, 0.8);
+    text-align: center;
+    font-family: "halloweenfont";
+    color: #940606;
+    /* font-size: 54px; */
+    /* padding: .1em; */
+}
+
+@font-face {
+    font-family: "halloweenfont";
+    src: url("HalloweenSecret-x3J1q.ttf");
+  }
+
+
+@font-face{
+    font-family: 'curzfont';
+    src:url("Curlz\ MT.woff") format('woff'), url("Curlz\ MT.woff2") format('woff2'), 
+  }
+
+div {
+    font-family: 'curzfont';
+    font-family: "CustomFont", sans-serif;
+    margin: 20px;
+    font-size: 20px;
+}
+#col1, #col2  {
+    float: left;
+    width: 40%;
+    padding: 0 10px;
+  }
+  
+  /* Remove extra left and right margins, due to padding */
+  #row1, #row2 {margin: 0 -5px;}
+  
+  /* Clear floats after the columns */
+  #row1:after, #row1:after  {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  
+  /* Responsive columns */
+  @media screen and (max-width: 600px) {
+    #col1, #col2 {
+      width: 100%;
+      display: block;
+      margin-bottom: 20px;
+    }
+  }
+  
+  /* Style the counter cards */
+  #card1, #card2 {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    padding: 16px;
+    text-align: center;
+    background-color: rgba(43, 60, 67, 0.7);
+    font-family: curzfont;
+  }
+
+  
+#alertBox{
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.8);
+    width: 100%;
+    background-image: url('mansion.png');
+    background-repeat: no-repeat;
+    background-size: 100vw 100vh ;
+  }
+
+
+#alertContent, #story {
+    text-align: center;
+    padding: 40px;
+    background: rgba(43, 60, 67, 0.7);
+    width:50%;
+    font-family:"curzfont";
+    font-size: 35px;
+    color: white; 
+    border-radius: 20px;
+}
+#story{
+  font-size: 25px;;
+}
+
+#title{
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    width:100%;
+    height:100%;
+    left: 0;
+    background: rgba(0, 0, 0, 0.8);
+    width: 100%;
+}
+
+/* img
+{
+    width: 100%; 
+    height: 100%;
+} */
+
+
+#story {
+    /* width:75% !important; */
+    max-width: 600px;
+    margin: 20px auto;
+    /* background-color: #fff; */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#choices {
+    /* max-width: 600px;
+    margin: 20px auto; */
+    color: white;
+}
+
+button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#image {
+    max-width: 600px;
+    margin: 20px auto;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+img {
+    width: 100vw;
+    height: 100vh;
+    display: block;
+}
+
+#bg{
+    /* background-image: url('steps.jpg');
+    background-repeat: no-repeat;
+    background-size: cover ;
+    width:100%;
+    height:100%; */
+    background: url('steps.jpg') no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
