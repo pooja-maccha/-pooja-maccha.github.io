@@ -4,7 +4,6 @@ let clickNumber = 0;
 let player = 1;
 let tile
 
-
 function initialize() {
     const container = document.getElementById('game-container');
     for (let i = 0; i < gridsize * gridsize; i++) {
@@ -13,7 +12,7 @@ function initialize() {
         tile.className = "tile";
 
         tile.id = i.toString();
-        tile.style.backgroundColor = 'gray';
+        // tile.style.backgroundColor = 'gray';
         container.appendChild(tile);
         tile.addEventListener('click', addMark);
     }
@@ -25,9 +24,9 @@ function checkLine(row, playerID, rowBool) {
         k = 1
     }
 
-    let box1 = document.getElementById(row).innerText;
-    let box2 = document.getElementById((parseInt(row) + 1 * k).toString()).innerText;
-    let box3 = document.getElementById((parseInt(row) + 2 * k).toString()).innerText;
+    let box1 = document.getElementById(row).querySelector('img')? document.getElementById(row).querySelector('img').className: '';
+    let box2 = document.getElementById((parseInt(row) + 1 * k).toString()).querySelector('img')? document.getElementById((parseInt(row) + 1 * k).toString()).querySelector('img').className: '';
+    let box3 = document.getElementById((parseInt(row) + 2 * k).toString()).querySelector('img')? document.getElementById((parseInt(row) + 2 * k).toString()).querySelector('img').className: '';
 
     if (((box1 === box2) && (box2 === box3)) && (box1 === playerID)) {
         return true;
@@ -37,15 +36,14 @@ function checkLine(row, playerID, rowBool) {
 
 }
 
-
 function checkDiag(playerID) {
-    let box1 = document.getElementById('0').innerText;
-    let box2 = document.getElementById('4').innerText;
-    let box3 = document.getElementById('8').innerText;
+    let box1 = (document.getElementById('0').querySelector('img')) ? (document.getElementById('0').querySelector('img')).className : '';
+    let box2 = (document.getElementById('4').querySelector('img')) ? (document.getElementById('4').querySelector('img')).className : '';
+    let box3 = (document.getElementById('8').querySelector('img')) ? (document.getElementById('8').querySelector('img')).className : '';
 
-    let box4 = document.getElementById('2').innerText;
-    let box5 = document.getElementById('4').innerText;
-    let box6 = document.getElementById('6').innerText;
+    let box4 = (document.getElementById('2').querySelector('img')) ? (document.getElementById('2').querySelector('img')).className : '';
+    let box5 = (document.getElementById('4').querySelector('img')) ? (document.getElementById('4').querySelector('img')).className : '';
+    let box6 = (document.getElementById('6').querySelector('img')) ? (document.getElementById('6').querySelector('img')).className : '';
 
     if ((((box1 === box2) && (box2 === box3)) && box1 === playerID) || (((box4 === box5) && (box5 === box6)) && box4 === playerID)) {
         return true;
@@ -54,7 +52,6 @@ function checkDiag(playerID) {
     return false;
 
 }
-
 
 function checkVictory(playerID) {
     if (checkDiag(playerID)) {
@@ -73,7 +70,7 @@ function checkVictory(playerID) {
 
 function clearBoard() {
     for (let i = 0; i < 9; i++) {
-        document.getElementById(i.toString()).innerText = ''
+        document.getElementById(i.toString()).innerHTML = ''
     }
     clickNumber=0;
     resetPlayer()
@@ -81,9 +78,6 @@ function clearBoard() {
 
 function addMark() {
 
-    // if (markTile) {
-    //     markTile.innerHTML = "";
-    // }
     // let xmark=document.createElement('img');
     // let omark= document.createElement('img');
     // xmark.setAttribute('class','xmark');
@@ -99,11 +93,19 @@ function addMark() {
         clickNumber++;
         if (clickNumber > 9)
             return
-        let xmark = document.createElement('p');
-        let omark = document.createElement('p');
+        // let xmark = document.createElement('p');
+        // let omark = document.createElement('p');
 
-        xmark.innerHTML = "X";
-        omark.innerHTML = "O";
+        // xmark.innerHTML = "X";
+        // omark.innerHTML = "O";
+
+        let xmark = document.createElement('img');
+        let omark = document.createElement('img');
+        xmark.setAttribute('class', 'X');
+        xmark.src = "./x-mark.png";
+
+        omark.setAttribute('class', 'O');
+        omark.src = "./o-mark.png";
 
         if (player == 2) {
             markTile.appendChild(xmark);
@@ -112,14 +114,14 @@ function addMark() {
                     alert('Player 1 won')
                     clearBoard();
                     // player = 2
-                }, 0);
+                }, 1);
             }
             else {
                 if (clickNumber == 9) {
                     setTimeout(function () {
                         alert('Game Over')
                         clearBoard();
-                    }, 0);
+                    }, 1);
                 }
             }
 
@@ -131,14 +133,14 @@ function addMark() {
                 setTimeout(function () {
                     alert('Player 2 won')
                     clearBoard();
-                }, 0);
+                }, 1);
             }
             else {
                 if (clickNumber == 9) {
                     setTimeout(function () {
                         alert('Game Over')
                         clearBoard();
-                    }, 0);
+                    }, 1);
                 }
             }
         }
