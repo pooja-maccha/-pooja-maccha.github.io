@@ -10,8 +10,6 @@ function initialize() {
     for (let i = 0; i < gridsize * gridsize; i++) {
         tile = document.createElement('div');
         tile.classList.add('tile');
-        // tile.dataset.index= i;
-
         tile.className = "tile";
 
         tile.id = i.toString();
@@ -93,9 +91,10 @@ function addMark() {
 
     // omark.setAttribute('class','xmark');
     // omark.src= "./o-mark.png";
-    changePlayer()
+    
 
     markTile = document.getElementById(this.id);
+    changePlayer()
     if (markTile.innerHTML === '') {
         clickNumber++;
         if (clickNumber > 9)
@@ -105,20 +104,14 @@ function addMark() {
 
         xmark.innerHTML = "X";
         omark.innerHTML = "O";
-        //basketTile=this.id
 
-        // markClass = document.getElementsByClassName("tile");
-
-
-
-        // if (markTile.innerHTML == '') {
-        if (player == 1) {
+        if (player == 2) {
             markTile.appendChild(xmark);
             if (checkVictory("X")) {
                 setTimeout(function () {
                     alert('Player 1 won')
                     clearBoard();
-                    player = 2
+                    // player = 2
                 }, 0);
             }
             else {
@@ -126,7 +119,6 @@ function addMark() {
                     setTimeout(function () {
                         alert('Game Over')
                         clearBoard();
-                        player = 2
                     }, 0);
                 }
             }
@@ -139,7 +131,6 @@ function addMark() {
                 setTimeout(function () {
                     alert('Player 2 won')
                     clearBoard();
-                    // player = 2
                 }, 0);
             }
             else {
@@ -147,13 +138,10 @@ function addMark() {
                     setTimeout(function () {
                         alert('Game Over')
                         clearBoard();
-                        // player = 2
                     }, 0);
                 }
             }
         }
-        // }
-
         document.getElementById("player").innerText = "" + player;
     }
 }
