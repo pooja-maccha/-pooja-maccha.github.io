@@ -77,9 +77,12 @@ function clearBoard() {
     for (let i = 0; i < 9; i++) {
         document.getElementById(i.toString()).innerText = ''
     }
+    clickNumber=0;
+    resetPlayer()
 }
 
 function addMark() {
+
     // if (markTile) {
     //     markTile.innerHTML = "";
     // }
@@ -90,19 +93,25 @@ function addMark() {
 
     // omark.setAttribute('class','xmark');
     // omark.src= "./o-mark.png";
-
-    let xmark = document.createElement('p');
-    let omark = document.createElement('p');
-
-    xmark.innerHTML = "X";
-    omark.innerHTML = "O";
-    //basketTile=this.id
-
-    // markClass = document.getElementsByClassName("tile");
+    changePlayer()
 
     markTile = document.getElementById(this.id);
+    if (markTile.innerHTML === '') {
+        clickNumber++;
+        if (clickNumber > 9)
+            return
+        let xmark = document.createElement('p');
+        let omark = document.createElement('p');
 
-    if (markTile.innerHTML == '') {
+        xmark.innerHTML = "X";
+        omark.innerHTML = "O";
+        //basketTile=this.id
+
+        // markClass = document.getElementsByClassName("tile");
+
+
+
+        // if (markTile.innerHTML == '') {
         if (player == 1) {
             markTile.appendChild(xmark);
             if (checkVictory("X")) {
@@ -111,7 +120,15 @@ function addMark() {
                     clearBoard();
                     player = 2
                 }, 0);
-                // clearBoard();
+            }
+            else {
+                if (clickNumber == 9) {
+                    setTimeout(function () {
+                        alert('Game Over')
+                        clearBoard();
+                        player = 2
+                    }, 0);
+                }
             }
 
 
@@ -122,20 +139,38 @@ function addMark() {
                 setTimeout(function () {
                     alert('Player 2 won')
                     clearBoard();
-                    player = 2
+                    // player = 2
                 }, 0);
-                //clearBoard();
+            }
+            else {
+                if (clickNumber == 9) {
+                    setTimeout(function () {
+                        alert('Game Over')
+                        clearBoard();
+                        // player = 2
+                    }, 0);
+                }
             }
         }
-    }
+        // }
 
-    document.getElementById("player").innerText = "" + player;
+        document.getElementById("player").innerText = "" + player;
+    }
+}
+
+
+function changePlayer() {
     if (player == 1)
         player = 2
     else
         player = 1
 }
 
+function resetPlayer()
+{
+    player=1;
+    document.getElementById("player").innerText = "" + player;
+}
 
 
 initialize()
